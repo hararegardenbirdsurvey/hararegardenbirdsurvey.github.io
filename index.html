@@ -508,7 +508,7 @@
 				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
 				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
 				legendText1.innerHTML = "The <b>size</b> of the marker relates to the <b>frequency of observation</b>. The bigger the circle, the more often the bird was seen! Hover the cursor over a marker to see the exact value. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
-				moreInfo.innerHTML = "<h3>Other</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 			} else if (a == "By Week"){
 				WeekStart = document.getElementById("StartWeek").value;
 				WeekEnd = document.getElementById("EndWeek").value;
@@ -526,7 +526,7 @@
 				legendText4.innerHTML = "<img id = 'legend3' src = MarkerHeard.svg width = 48.25 /> Bird was heard";
 				legendText5.innerHTML = "<img id = 'legend4' src = MarkerFlyingOverhead.svg width = 41.22 /> Bird was seen flying overhead";
 				legendText6.innerHTML = "<img id = 'legend5' src = MarkerBreeding.svg width = 37.22 /> Bird was observed breeding";
-				moreInfo.innerHTML = "<h3>Other</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 				FrequencyLayer.setMap(null);
 				ArbitraryLayer.setMap(null);
 				WeeklyLayer.setStyle(function(feature){
@@ -576,7 +576,7 @@
 				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
 				WeeklyLayer.setMap(null);
 				FrequencyLayer.setMap(null);
-				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
 				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
 				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
@@ -630,7 +630,7 @@
 					}
 				});
 				infoContent.innerHTML = "";
-				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
 				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
 				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
@@ -650,7 +650,7 @@
 					}
 				});
 				infoContent.innerHTML = "";
-				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
 				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
 				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
@@ -676,7 +676,7 @@
 				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
 				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
 				legendText1.innerHTML = "The <b>size</b> of the circle indicates the <b>number of weeks of data that were submitted</b>. The bigger the circle, the better the location was at submitting their forms! Hover the cursor over a marker to see the exact value at that location.</b>"
-				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				moreInfo.innerHTML = "<h3>Further Information</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
 				WeeklyLayer.setMap(null);
 				FrequencyLayer.setMap(null);
 				ArbitraryLayer.setMap(map);
@@ -815,6 +815,7 @@
 				MinMax.title = "Show the overlay";
 			} else {
 				MinMaxText.innerHTML = "<b>-</b>";
+				MinMax.title = "Hide the overlay";
 				controlRecentUI.appendChild(controlRecentText);
 				controlRecentUI.appendChild(legendUI);
 				controlRecentUI.appendChild(infoContent);
