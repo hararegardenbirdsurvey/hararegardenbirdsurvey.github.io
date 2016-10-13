@@ -7,6 +7,7 @@
 <style>
 	html, body, #map {
 		height: 100%;
+		width: 100%;
 		margin: 0;
 		padding: 0;
 	}
@@ -14,20 +15,27 @@
 		font-family: "Lucida Sans Unicode", sans-serif;
 		font-size: 14px;
 	}
-	.UI {
+	.UIUIUI {
 		display: inline-block;
 		background-color: white;
-		padding: 10px;
 		margin: 10px;
 		text-align: center;
-		max-width: 20%;
+		height: 100%;
 		max-height: 80%;
+		max-width: 20%;
+	}
+	.UI {
+		display: block;
+		background-color: white;
+		text-align: center;
+		max-height: 100%;
 		overflow: auto;
 	}
 	.MinMaxUI {
 		cursor: pointer;
 		background-color: white;
 		text-align: right;
+		padding: 10px;
 	}
 	.UIUI {
 		background-color: white;
@@ -36,12 +44,13 @@
 		text-align: center;
 		max-width: 20%;
 		max-height: 80%;
+		overflow: auto;
 	}
 	.subUI {
 		display: block;
 		text-align: left;
 		clear: left;
-		padding-bottom: 5px;
+		padding: 0px 10px 10px 10px;
 		border-bottom: solid 2px grey;
 	}
 	.subsubUI {
@@ -133,111 +142,111 @@
 		</select>
 		<label id = "searchBoxLabel">Use this to search through the list if needed:<input type = "search" id = "searchBox"/></label>
 		<label id = "WeekLabel" style = "display: none;">From Week <select title = "Hover the cursor over a week number in the dropdown list to see the dates" id = "StartWeek" onchange = "javascript:SetMinMax();">
-			<option value = 1 title = "27 June 2011 - 03 July 2011">1</option>
-			<option value = 2 title = "04 July 2011 - 10 July 2011">2</option>
-			<option value = 3 title = "11 July 2011 - 17 July 2011">3</option>
-			<option value = 4 title = "18 July 2011 - 24 July 2011">4</option>
-			<option value = 5 title = "25 July 2011 - 31 July 2011">5</option>
-			<option value = 6 title = "01 August 2011 - 07 August 2011">6</option>
-			<option value = 7 title = "08 August 2011 - 14 August 2011">7</option>
-			<option value = 8 title = "15 August 2011 - 21 August 2011">8</option>
-			<option value = 9 title = "22 August 2011 - 28 August 2011">9</option>
-			<option value = 10 title = "29 August 2011 - 04 September 2011">10</option>
-			<option value = 11 title = "05 September 2011 - 11 September 2011">11</option>
-			<option value = 12 title = "12 September 2011 - 18 September 2011">12</option>
-			<option value = 13 title = "19 September 2011 - 25 September 2011">13</option>
-			<option value = 14 title = "26 September 2011 - 02 October 2011">14</option>
-			<option value = 15 title = "03 October 2011 - 09 October 2011">15</option>
-			<option value = 16 title = "10 October 2011 - 16 October 2011">16</option>
-			<option value = 17 title = "17 October 2011 - 23 October 2011">17</option>
-			<option value = 18 title = "24 October 2011 - 30 October 2011">18</option>
-			<option value = 19 title = "31 October 2011 - 06 November 2011">19</option>
-			<option value = 20 title = "07 November 2011 - 13 November 2011">20</option>
-			<option value = 21 title = "14 November 2011 - 20 November 2011">21</option>
-			<option value = 22 title = "21 November 2011 - 27 November 2011">22</option>
-			<option value = 23 title = "28 November 2011 - 04 December 2011">23</option>
-			<option value = 24 title = "05 December 2011 - 11 December 2011">24</option>
-			<option value = 25 title = "12 December 2011 - 18 December 2011">25</option>
-			<option value = 26 title = "19 December 2011 - 25 December 2011">26</option>
-			<option value = 27 title = "26 December 2011 - 01 January 2012">27</option>
-			<option value = 28 title = "02 January 2012 - 08 January 2012">28</option>
-			<option value = 29 title = "09 January 2012 - 15 January 2012">29</option>
-			<option value = 30 title = "16 January 2012 - 22 January 2012">30</option>
-			<option value = 31 title = "23 January 2012 - 29 January 2012">31</option>
-			<option value = 32 title = "30 January 2012 - 05 February 2012">32</option>
-			<option value = 33 title = "06 February 2012 - 12 February 2012">33</option>
-			<option value = 34 title = "13 February 2012 - 19 February 2012">34</option>
-			<option value = 35 title = "20 February 2012 - 26 February 2012">35</option>
-			<option value = 36 title = "27 February 2012 - 04 March 2012">36</option>
-			<option value = 37 title = "05 March 2012 - 11 March 2012">37</option>
-			<option value = 38 title = "12 March 2012 - 18 March 2012">38</option>
-			<option value = 39 title = "19 March 2012 - 25 March 2012">39</option>
-			<option value = 40 title = "26 March 2012 - 01 April 2012">40</option>
-			<option value = 41 title = "02 April 2012 - 08 April 2012">41</option>
-			<option value = 42 title = "09 April 2012 - 15 April 2012">42</option>
-			<option value = 43 title = "16 April 2012 - 22 April 2012">43</option>
-			<option value = 44 title = "23 April 2012 - 29 April 2012">44</option>
-			<option value = 45 title = "30 April 2012 - 06 May 2012">45</option>
-			<option value = 46 title = "07 May 2012 - 13 May 2012">46</option>
-			<option value = 47 title = "14 May 2012 - 20 May 2012">47</option>
-			<option value = 48 title = "21 May 2012 - 27 May 2012">48</option>
-			<option value = 49 title = "28 May 2012 - 03 June 2012">49</option>
-			<option value = 50 title = "04 June 2012 - 10 June 2012">50</option>
-			<option value = 51 title = "11 June 2012 - 17 June 2012">51</option>
-			<option value = 52 title = "18 June 2012 - 24 June 2012">52</option>
+			<option value = 1 title = "27 June 2011 to 03 July 2011">1</option>
+			<option value = 2 title = "04 July 2011 to 10 July 2011">2</option>
+			<option value = 3 title = "11 July 2011 to 17 July 2011">3</option>
+			<option value = 4 title = "18 July 2011 to 24 July 2011">4</option>
+			<option value = 5 title = "25 July 2011 to 31 July 2011">5</option>
+			<option value = 6 title = "01 August 2011 to 07 August 2011">6</option>
+			<option value = 7 title = "08 August 2011 to 14 August 2011">7</option>
+			<option value = 8 title = "15 August 2011 to 21 August 2011">8</option>
+			<option value = 9 title = "22 August 2011 to 28 August 2011">9</option>
+			<option value = 10 title = "29 August 2011 to 04 September 2011">10</option>
+			<option value = 11 title = "05 September 2011 to 11 September 2011">11</option>
+			<option value = 12 title = "12 September 2011 to 18 September 2011">12</option>
+			<option value = 13 title = "19 September 2011 to 25 September 2011">13</option>
+			<option value = 14 title = "26 September 2011 to 02 October 2011">14</option>
+			<option value = 15 title = "03 October 2011 to 09 October 2011">15</option>
+			<option value = 16 title = "10 October 2011 to 16 October 2011">16</option>
+			<option value = 17 title = "17 October 2011 to 23 October 2011">17</option>
+			<option value = 18 title = "24 October 2011 to 30 October 2011">18</option>
+			<option value = 19 title = "31 October 2011 to 06 November 2011">19</option>
+			<option value = 20 title = "07 November 2011 to 13 November 2011">20</option>
+			<option value = 21 title = "14 November 2011 to 20 November 2011">21</option>
+			<option value = 22 title = "21 November 2011 to 27 November 2011">22</option>
+			<option value = 23 title = "28 November 2011 to 04 December 2011">23</option>
+			<option value = 24 title = "05 December 2011 to 11 December 2011">24</option>
+			<option value = 25 title = "12 December 2011 to 18 December 2011">25</option>
+			<option value = 26 title = "19 December 2011 to 25 December 2011">26</option>
+			<option value = 27 title = "26 December 2011 to 01 January 2012">27</option>
+			<option value = 28 title = "02 January 2012 to 08 January 2012">28</option>
+			<option value = 29 title = "09 January 2012 to 15 January 2012">29</option>
+			<option value = 30 title = "16 January 2012 to 22 January 2012">30</option>
+			<option value = 31 title = "23 January 2012 to 29 January 2012">31</option>
+			<option value = 32 title = "30 January 2012 to 05 February 2012">32</option>
+			<option value = 33 title = "06 February 2012 to 12 February 2012">33</option>
+			<option value = 34 title = "13 February 2012 to 19 February 2012">34</option>
+			<option value = 35 title = "20 February 2012 to 26 February 2012">35</option>
+			<option value = 36 title = "27 February 2012 to 04 March 2012">36</option>
+			<option value = 37 title = "05 March 2012 to 11 March 2012">37</option>
+			<option value = 38 title = "12 March 2012 to 18 March 2012">38</option>
+			<option value = 39 title = "19 March 2012 to 25 March 2012">39</option>
+			<option value = 40 title = "26 March 2012 to 01 April 2012">40</option>
+			<option value = 41 title = "02 April 2012 to 08 April 2012">41</option>
+			<option value = 42 title = "09 April 2012 to 15 April 2012">42</option>
+			<option value = 43 title = "16 April 2012 to 22 April 2012">43</option>
+			<option value = 44 title = "23 April 2012 to 29 April 2012">44</option>
+			<option value = 45 title = "30 April 2012 to 06 May 2012">45</option>
+			<option value = 46 title = "07 May 2012 to 13 May 2012">46</option>
+			<option value = 47 title = "14 May 2012 to 20 May 2012">47</option>
+			<option value = 48 title = "21 May 2012 to 27 May 2012">48</option>
+			<option value = 49 title = "28 May 2012 to 03 June 2012">49</option>
+			<option value = 50 title = "04 June 2012 to 10 June 2012">50</option>
+			<option value = 51 title = "11 June 2012 to 17 June 2012">51</option>
+			<option value = 52 title = "18 June 2012 to 24 June 2012">52</option>
 		</select></label><label id = "WeekLabel1" style = "display: none;"> up to Week <select title = "Hover the cursor over a week number to see the dates" id = "EndWeek" onchange = "javascript:SetMaxMin();">
-			<option value = 1 title = "27 June 2011 - 03 July 2011">1</option>
-			<option value = 2 title = "04 July 2011 - 10 July 2011">2</option>
-			<option value = 3 title = "11 July 2011 - 17 July 2011">3</option>
-			<option value = 4 title = "18 July 2011 - 24 July 2011">4</option>
-			<option value = 5 title = "25 July 2011 - 31 July 2011">5</option>
-			<option value = 6 title = "01 August 2011 - 07 August 2011">6</option>
-			<option value = 7 title = "08 August 2011 - 14 August 2011">7</option>
-			<option value = 8 title = "15 August 2011 - 21 August 2011">8</option>
-			<option value = 9 title = "22 August 2011 - 28 August 2011">9</option>
-			<option value = 10 title = "29 August 2011 - 04 September 2011">10</option>
-			<option value = 11 title = "05 September 2011 - 11 September 2011">11</option>
-			<option value = 12 title = "12 September 2011 - 18 September 2011">12</option>
-			<option value = 13 title = "19 September 2011 - 25 September 2011">13</option>
-			<option value = 14 title = "26 September 2011 - 02 October 2011">14</option>
-			<option value = 15 title = "03 October 2011 - 09 October 2011">15</option>
-			<option value = 16 title = "10 October 2011 - 16 October 2011">16</option>
-			<option value = 17 title = "17 October 2011 - 23 October 2011">17</option>
-			<option value = 18 title = "24 October 2011 - 30 October 2011">18</option>
-			<option value = 19 title = "31 October 2011 - 06 November 2011">19</option>
-			<option value = 20 title = "07 November 2011 - 13 November 2011">20</option>
-			<option value = 21 title = "14 November 2011 - 20 November 2011">21</option>
-			<option value = 22 title = "21 November 2011 - 27 November 2011">22</option>
-			<option value = 23 title = "28 November 2011 - 04 December 2011">23</option>
-			<option value = 24 title = "05 December 2011 - 11 December 2011">24</option>
-			<option value = 25 title = "12 December 2011 - 18 December 2011">25</option>
-			<option value = 26 title = "19 December 2011 - 25 December 2011">26</option>
-			<option value = 27 title = "26 December 2011 - 01 January 2012">27</option>
-			<option value = 28 title = "02 January 2012 - 08 January 2012">28</option>
-			<option value = 29 title = "09 January 2012 - 15 January 2012">29</option>
-			<option value = 30 title = "16 January 2012 - 22 January 2012">30</option>
-			<option value = 31 title = "23 January 2012 - 29 January 2012">31</option>
-			<option value = 32 title = "30 January 2012 - 05 February 2012">32</option>
-			<option value = 33 title = "06 February 2012 - 12 February 2012">33</option>
-			<option value = 34 title = "13 February 2012 - 19 February 2012">34</option>
-			<option value = 35 title = "20 February 2012 - 26 February 2012">35</option>
-			<option value = 36 title = "27 February 2012 - 04 March 2012">36</option>
-			<option value = 37 title = "05 March 2012 - 11 March 2012">37</option>
-			<option value = 38 title = "12 March 2012 - 18 March 2012">38</option>
-			<option value = 39 title = "19 March 2012 - 25 March 2012">39</option>
-			<option value = 40 title = "26 March 2012 - 01 April 2012">40</option>
-			<option value = 41 title = "02 April 2012 - 08 April 2012">41</option>
-			<option value = 42 title = "09 April 2012 - 15 April 2012">42</option>
-			<option value = 43 title = "16 April 2012 - 22 April 2012">43</option>
-			<option value = 44 title = "23 April 2012 - 29 April 2012">44</option>
-			<option value = 45 title = "30 April 2012 - 06 May 2012">45</option>
-			<option value = 46 title = "07 May 2012 - 13 May 2012">46</option>
-			<option value = 47 title = "14 May 2012 - 20 May 2012">47</option>
-			<option value = 48 title = "21 May 2012 - 27 May 2012">48</option>
-			<option value = 49 title = "28 May 2012 - 03 June 2012">49</option>
-			<option value = 50 title = "04 June 2012 - 10 June 2012">50</option>
-			<option value = 51 title = "11 June 2012 - 17 June 2012">51</option>
-			<option value = 52 selected = 'selected' title = "18 June 2012 - 24 June 2012">52</option>
+			<option value = 1 title = "27 June 2011 to 03 July 2011">1</option>
+			<option value = 2 title = "04 July 2011 to 10 July 2011">2</option>
+			<option value = 3 title = "11 July 2011 to 17 July 2011">3</option>
+			<option value = 4 title = "18 July 2011 to 24 July 2011">4</option>
+			<option value = 5 title = "25 July 2011 to 31 July 2011">5</option>
+			<option value = 6 title = "01 August 2011 to 07 August 2011">6</option>
+			<option value = 7 title = "08 August 2011 to 14 August 2011">7</option>
+			<option value = 8 title = "15 August 2011 to 21 August 2011">8</option>
+			<option value = 9 title = "22 August 2011 to 28 August 2011">9</option>
+			<option value = 10 title = "29 August 2011 to 04 September 2011">10</option>
+			<option value = 11 title = "05 September 2011 to 11 September 2011">11</option>
+			<option value = 12 title = "12 September 2011 to 18 September 2011">12</option>
+			<option value = 13 title = "19 September 2011 to 25 September 2011">13</option>
+			<option value = 14 title = "26 September 2011 to 02 October 2011">14</option>
+			<option value = 15 title = "03 October 2011 to 09 October 2011">15</option>
+			<option value = 16 title = "10 October 2011 to 16 October 2011">16</option>
+			<option value = 17 title = "17 October 2011 to 23 October 2011">17</option>
+			<option value = 18 title = "24 October 2011 to 30 October 2011">18</option>
+			<option value = 19 title = "31 October 2011 to 06 November 2011">19</option>
+			<option value = 20 title = "07 November 2011 to 13 November 2011">20</option>
+			<option value = 21 title = "14 November 2011 to 20 November 2011">21</option>
+			<option value = 22 title = "21 November 2011 to 27 November 2011">22</option>
+			<option value = 23 title = "28 November 2011 to 04 December 2011">23</option>
+			<option value = 24 title = "05 December 2011 to 11 December 2011">24</option>
+			<option value = 25 title = "12 December 2011 to 18 December 2011">25</option>
+			<option value = 26 title = "19 December 2011 to 25 December 2011">26</option>
+			<option value = 27 title = "26 December 2011 to 01 January 2012">27</option>
+			<option value = 28 title = "02 January 2012 to 08 January 2012">28</option>
+			<option value = 29 title = "09 January 2012 to 15 January 2012">29</option>
+			<option value = 30 title = "16 January 2012 to 22 January 2012">30</option>
+			<option value = 31 title = "23 January 2012 to 29 January 2012">31</option>
+			<option value = 32 title = "30 January 2012 to 05 February 2012">32</option>
+			<option value = 33 title = "06 February 2012 to 12 February 2012">33</option>
+			<option value = 34 title = "13 February 2012 to 19 February 2012">34</option>
+			<option value = 35 title = "20 February 2012 to 26 February 2012">35</option>
+			<option value = 36 title = "27 February 2012 to 04 March 2012">36</option>
+			<option value = 37 title = "05 March 2012 to 11 March 2012">37</option>
+			<option value = 38 title = "12 March 2012 to 18 March 2012">38</option>
+			<option value = 39 title = "19 March 2012 to 25 March 2012">39</option>
+			<option value = 40 title = "26 March 2012 to 01 April 2012">40</option>
+			<option value = 41 title = "02 April 2012 to 08 April 2012">41</option>
+			<option value = 42 title = "09 April 2012 to 15 April 2012">42</option>
+			<option value = 43 title = "16 April 2012 to 22 April 2012">43</option>
+			<option value = 44 title = "23 April 2012 to 29 April 2012">44</option>
+			<option value = 45 title = "30 April 2012 to 06 May 2012">45</option>
+			<option value = 46 title = "07 May 2012 to 13 May 2012">46</option>
+			<option value = 47 title = "14 May 2012 to 20 May 2012">47</option>
+			<option value = 48 title = "21 May 2012 to 27 May 2012">48</option>
+			<option value = 49 title = "28 May 2012 to 03 June 2012">49</option>
+			<option value = 50 title = "04 June 2012 to 10 June 2012">50</option>
+			<option value = 51 title = "11 June 2012 to 17 June 2012">51</option>
+			<option value = 52 selected = 'selected' title = "18 June 2012 to 24 June 2012">52</option>
 		</select></label>
 		<label id = "SpeedOfWeekChangeLabel" style = "display: none;">Time Interval Between Change of Week:<br />
 		0.5s<input type = "range" title = "Adjust the slider to choose a speed for the animation: minimum interval between changing the week shown is 0.5s and maximum is 5s" id = "SpeedOfWeekChange" value = 4000 min = 500 max = 5000 />5s</label>
@@ -265,6 +274,7 @@
 		var controlRecentUI = document.createElement('div');
 		var controlRecentText = document.createElement('div');
 		var controlFormUI = document.createElement('div');
+		var Right = document.createElement('div');
 		var MinMax = document.createElement('div');
 		var MinMaxText = document.createElement('div');
 		var infoContent = document.createElement('div');
@@ -290,7 +300,7 @@
 			
 			MinMax.className = 'MinMaxUI';
 			MinMaxText.innerHTML = '<b>-</b>';
-			MinMax.title = 'Hide this overlay';
+			MinMaxText.title = 'Hide this overlay';
 			MinMax.appendChild(MinMaxText);
 			MinMax.onclick = function(){MinMaxOverlay()};
 			controlRecentText.className = 'subUI';
@@ -331,7 +341,9 @@
 			script.onload = function() {
 				var a = FrequencyLayer.getFeatureById('Chalkmead');
 				controlRecentUI.className = 'UI';
-				controlRecentUI.appendChild(MinMax);
+				Right.className = 'UIUIUI';
+				Right.appendChild(MinMax);
+				Right.appendChild(controlRecentUI);
 				controlRecentUI.appendChild(controlRecentText);
 				controlRecentUI.appendChild(legendUI);
 				controlRecentUI.appendChild(infoContent);
@@ -488,7 +500,7 @@
 			BirdName = document.getElementById("BirdNameSearch").value;
 			a = document.getElementById('ArbitraryDataList').value;
 			map.controls[google.maps.ControlPosition.TOP_RIGHT].clear();
-			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlRecentUI);
+			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(Right);
 			if (a == "Frequency"){
 				FrequencyLayer.setStyle(function(feature){
 					var Freq1 = feature.getProperty(document.getElementById("BirdNameSearch").value);
@@ -536,7 +548,7 @@
 					};
 				});
 				WeeklyLayer.setMap(map);
-				controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+				controlRecentText.innerHTML = "<h3>Now Showing: The data for " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " from Week " + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 				if(WeekStart < WeekEnd){
 					timeInterval = setInterval(function(){
 						WeekStart++;
@@ -556,7 +568,7 @@
 							};
 						});
 						WeeklyLayer.setMap(map);
-						controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+						controlRecentText.innerHTML = "<h3>Now Showing: The data for " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " from Week " + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 					}, document.getElementById('SpeedOfWeekChange').value);
 				} else {
 					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
@@ -588,11 +600,11 @@
 					var Freq1 = feature.getProperty(a + WeekStart);
 					return {
 						icon: getCircle(Freq1, 3, feature.getId()),
-						title: Freq1 + " different species were seen here in week " + WeekStart
+						title: Freq1 + " different species were seen here from " + document.getElementById('StartWeek')[WeekStart-1].title
 					};
 				});
 				ArbitraryLayer.setMap(map);
-				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 				if(WeekStart < WeekEnd){
 					timeInterval = setInterval(function(){
 						WeekStart++;
@@ -607,11 +619,11 @@
 							var Freq1 = feature.getProperty(a + WeekStart);
 							return {
 								icon: getCircle(Freq1, 3, feature.getId()),
-								title: Freq1 + " different species were seen here in week " + WeekStart
+								title: Freq1 + " different species were seen here from " + document.getElementById('StartWeek')[WeekStart-1].title
 							};
 						});
 						ArbitraryLayer.setMap(map);
-						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 					}, document.getElementById('SpeedOfWeekChange').value);
 				} else {
 					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
@@ -707,7 +719,7 @@
 					};
 				});
 				WeeklyLayer.setMap(map);
-				controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+				controlRecentText.innerHTML = "<h3>Now Showing: The data for " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " from Week " + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 				if(WeekStart < WeekEnd){
 					timeInterval = setInterval(function(){
 						WeekStart++;
@@ -727,7 +739,7 @@
 							};
 						});
 						WeeklyLayer.setMap(map);
-						controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+						controlRecentText.innerHTML = "<h3>Now Showing: The data for " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " from Week " + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 					}, document.getElementById('SpeedOfWeekChange').value)
 				} else {
 					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
@@ -742,11 +754,11 @@
 					var Freq1 = feature.getProperty(a + WeekStart);
 					return {
 						icon: getCircle(Freq1, 2.5, feature.getId()),
-						title: Freq1 + " different species were seen here in week " + WeekStart
+						title: Freq1 + " different species were seen from " + document.getElementById('StartWeek')[WeekStart-1].title
 					};
 				});
 				ArbitraryLayer.setMap(map);
-				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 				if(WeekStart < WeekEnd){
 					timeInterval = setInterval(function(){
 						WeekStart++;
@@ -763,11 +775,11 @@
 							var Freq1 = feature.getProperty(a + WeekStart);
 							return {
 								icon: getCircle(Freq1, 2.5, feature.getId()),
-								title: Freq1 + " different species were seen here in week " + WeekStart
+								title: Freq1 + " different species were seen here from " + document.getElementById('StartWeek')[WeekStart-1].title
 							};
 						});
 						ArbitraryLayer.setMap(map);
-						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + " ("+ document.getElementById('StartWeek')[WeekStart-1].title + ")</h3>";
 					}, document.getElementById('SpeedOfWeekChange').value);
 				} else {
 					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
@@ -807,19 +819,16 @@
 			};
 		}
 		function MinMaxOverlay(){
-			if (MinMaxText.innerHTML == "<b>-</b>"){
-				while (controlRecentUI.childNodes.length > 1) {
-					controlRecentUI.removeChild(controlRecentUI.lastChild);
-				}
+			if (MinMaxText.innerHTML == '<b>-</b>'){
 				MinMaxText.innerHTML = "<b>+</b>";
-				MinMax.title = "Show the overlay";
+				MinMaxText.title = "Show the overlay";
+				controlRecentUI.style.display = "none";
+				Right.style.height = "auto";
 			} else {
 				MinMaxText.innerHTML = "<b>-</b>";
-				MinMax.title = "Hide the overlay";
-				controlRecentUI.appendChild(controlRecentText);
-				controlRecentUI.appendChild(legendUI);
-				controlRecentUI.appendChild(infoContent);
-				controlRecentUI.appendChild(moreInfo);
+				MinMaxText.title = "Hide the overlay";
+				controlRecentUI.style.display = "block";
+				Right.style.height = "100%";
 			}
 		}
 		function SetMinMax(){//Adjust week limits
