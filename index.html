@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>HGBS2011-2012</title>
+	<meta name="viewport" content="no-cache">
+	<meta charset="utf-8">
+<style>
+	html, body, #map {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	* {
+		font-family: "Lucida Sans Unicode", sans-serif;
+		font-size: 14px;
+	}
+	.UI {
+		display: inline-block;
+		background-color: white;
+		padding: 10px;
+		margin: 10px;
+		text-align: center;
+		max-width: 20%;
+		max-height: 80%;
+		overflow: auto;
+	}
+	.MinMaxUI {
+		cursor: pointer;
+		background-color: white;
+		text-align: right;
+	}
+	.UIUI {
+		background-color: white;
+		padding: 10px;
+		margin: 10px;
+		text-align: center;
+		max-width: 20%;
+		max-height: 80%;
+	}
+	.subUI {
+		display: block;
+		text-align: left;
+		clear: left;
+		padding-bottom: 5px;
+		border-bottom: solid 2px grey;
+	}
+	.subsubUI {
+		text-align: centre;
+		clear: both;
+		padding-bottom: 5px;
+	}
+	#pic {
+		cursor: pointer;
+		margin: 5px;
+		float: left;
+		max-width: 50%;
+	}
+	#legend1 {
+		margin-right: 28.79px;
+		margin-top: 29.04px;
+	}
+	#legend2 {
+		margin-right: 7.17px;
+		margin-top: 14.3px;
+	}
+	#legend3 {
+		margin-right: 1.75px;
+		margin-top: 12.1px;
+	}
+	#legend4 {
+		margin-right: 8.78px;
+		margin-top: 3.23px;
+	}
+	#legend5 {
+		margin-right: 12.78px;
+		margin-top: 4.75px;
+	}
+	input[type = "text"] {
+		margin: 10px;
+		width: 90%;
+		display: inline-block;
+		box-sizing: border-box;
+		background-color: #fafafa;
+		font-family: inherit;
+	}
+	input[type = "button"], input[type = "submit"] {
+		margin: 10px;
+		padding: 10px;
+		width: 90%;
+		display: inline-block;
+		box-sizing: border-box;
+		font-family: inherit;
+	}
+	input[type = "range"] {
+		width: 50%;
+		display: inline-block;
+		box-sizing: border-box;
+		font-family: inherit;
+	}
+	select {
+		margin: 10px;
+		max-width: 90%;
+		display: inline-block;
+		box-sizing: border-box;
+		background-color: #fafafa;
+		font-family: inherit;
+	}
+	label {
+		display: inline-block;
+		max-width: 90%;
+	}
+	a {
+		display: block;
+	}
+</style>
+</head>
+<body onload = "initMap()">
+	<script
+		src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gpzcZk2cZ5Lr0NPJDlDmoohChueFYw8">
+	</script>
+	<div id = "map"></div>
+	<form id = "Form1" onsubmit = "SearchInputFunction(); return false" autocomplete = "off">
+		<h3>Choose Some Data to Show:</h3>
+		<select id = "ArbitraryDataList" onchange = "javascript:HideUnhide();">
+			<option title = "Display on the map how often a bird species was seen over the year" value = "Frequency">Show the frequency of a species over the year</option>
+			<option title = "Show the total number of species seen at each location over the year" value = "Total Number of Species Observed">Total number of species observed over the year</option>
+			<option title = "Show the average number of bird species seen each week" value = "Average Number of Species per Week Observed">Average Number of Species per Week Over the Year</option>
+			<option title = "Display how many weeks of data were submitted from each location" value = "Total Number of Weeks Observed">Total number of weeks submitted</option>
+			<option title = "Cycle through a range of weeks, showing how many species were seen each week" value = "Number of Species Seen Week ">Total number of species seen in range of weeks</option>
+			<option title = "Cycle through a range of weeks, showing where a particular bird species was seen each week" value = "By Week">Show weekly observation data for a species</option>
+		</select>
+		<select title = "Birds are listed according to Roberts VII number" id = "BirdNameSearch">
+		</select>
+		<label id = "searchBoxLabel">Use this to search through the list if needed:<input type = "search" id = "searchBox"/></label>
+		<label id = "WeekLabel" style = "display: none;">From Week <select title = "Hover the cursor over a week number in the dropdown list to see the dates" id = "StartWeek" onchange = "javascript:SetMinMax();">
+			<option value = 1 title = "27 June 2011 - 03 July 2011">1</option>
+			<option value = 2 title = "04 July 2011 - 10 July 2011">2</option>
+			<option value = 3 title = "11 July 2011 - 17 July 2011">3</option>
+			<option value = 4 title = "18 July 2011 - 24 July 2011">4</option>
+			<option value = 5 title = "25 July 2011 - 31 July 2011">5</option>
+			<option value = 6 title = "01 August 2011 - 07 August 2011">6</option>
+			<option value = 7 title = "08 August 2011 - 14 August 2011">7</option>
+			<option value = 8 title = "15 August 2011 - 21 August 2011">8</option>
+			<option value = 9 title = "22 August 2011 - 28 August 2011">9</option>
+			<option value = 10 title = "29 August 2011 - 04 September 2011">10</option>
+			<option value = 11 title = "05 September 2011 - 11 September 2011">11</option>
+			<option value = 12 title = "12 September 2011 - 18 September 2011">12</option>
+			<option value = 13 title = "19 September 2011 - 25 September 2011">13</option>
+			<option value = 14 title = "26 September 2011 - 02 October 2011">14</option>
+			<option value = 15 title = "03 October 2011 - 09 October 2011">15</option>
+			<option value = 16 title = "10 October 2011 - 16 October 2011">16</option>
+			<option value = 17 title = "17 October 2011 - 23 October 2011">17</option>
+			<option value = 18 title = "24 October 2011 - 30 October 2011">18</option>
+			<option value = 19 title = "31 October 2011 - 06 November 2011">19</option>
+			<option value = 20 title = "07 November 2011 - 13 November 2011">20</option>
+			<option value = 21 title = "14 November 2011 - 20 November 2011">21</option>
+			<option value = 22 title = "21 November 2011 - 27 November 2011">22</option>
+			<option value = 23 title = "28 November 2011 - 04 December 2011">23</option>
+			<option value = 24 title = "05 December 2011 - 11 December 2011">24</option>
+			<option value = 25 title = "12 December 2011 - 18 December 2011">25</option>
+			<option value = 26 title = "19 December 2011 - 25 December 2011">26</option>
+			<option value = 27 title = "26 December 2011 - 01 January 2012">27</option>
+			<option value = 28 title = "02 January 2012 - 08 January 2012">28</option>
+			<option value = 29 title = "09 January 2012 - 15 January 2012">29</option>
+			<option value = 30 title = "16 January 2012 - 22 January 2012">30</option>
+			<option value = 31 title = "23 January 2012 - 29 January 2012">31</option>
+			<option value = 32 title = "30 January 2012 - 05 February 2012">32</option>
+			<option value = 33 title = "06 February 2012 - 12 February 2012">33</option>
+			<option value = 34 title = "13 February 2012 - 19 February 2012">34</option>
+			<option value = 35 title = "20 February 2012 - 26 February 2012">35</option>
+			<option value = 36 title = "27 February 2012 - 04 March 2012">36</option>
+			<option value = 37 title = "05 March 2012 - 11 March 2012">37</option>
+			<option value = 38 title = "12 March 2012 - 18 March 2012">38</option>
+			<option value = 39 title = "19 March 2012 - 25 March 2012">39</option>
+			<option value = 40 title = "26 March 2012 - 01 April 2012">40</option>
+			<option value = 41 title = "02 April 2012 - 08 April 2012">41</option>
+			<option value = 42 title = "09 April 2012 - 15 April 2012">42</option>
+			<option value = 43 title = "16 April 2012 - 22 April 2012">43</option>
+			<option value = 44 title = "23 April 2012 - 29 April 2012">44</option>
+			<option value = 45 title = "30 April 2012 - 06 May 2012">45</option>
+			<option value = 46 title = "07 May 2012 - 13 May 2012">46</option>
+			<option value = 47 title = "14 May 2012 - 20 May 2012">47</option>
+			<option value = 48 title = "21 May 2012 - 27 May 2012">48</option>
+			<option value = 49 title = "28 May 2012 - 03 June 2012">49</option>
+			<option value = 50 title = "04 June 2012 - 10 June 2012">50</option>
+			<option value = 51 title = "11 June 2012 - 17 June 2012">51</option>
+			<option value = 52 title = "18 June 2012 - 24 June 2012">52</option>
+		</select></label><label id = "WeekLabel1" style = "display: none;"> up to Week <select title = "Hover the cursor over a week number to see the dates" id = "EndWeek" onchange = "javascript:SetMaxMin();">
+			<option value = 1 title = "27 June 2011 - 03 July 2011">1</option>
+			<option value = 2 title = "04 July 2011 - 10 July 2011">2</option>
+			<option value = 3 title = "11 July 2011 - 17 July 2011">3</option>
+			<option value = 4 title = "18 July 2011 - 24 July 2011">4</option>
+			<option value = 5 title = "25 July 2011 - 31 July 2011">5</option>
+			<option value = 6 title = "01 August 2011 - 07 August 2011">6</option>
+			<option value = 7 title = "08 August 2011 - 14 August 2011">7</option>
+			<option value = 8 title = "15 August 2011 - 21 August 2011">8</option>
+			<option value = 9 title = "22 August 2011 - 28 August 2011">9</option>
+			<option value = 10 title = "29 August 2011 - 04 September 2011">10</option>
+			<option value = 11 title = "05 September 2011 - 11 September 2011">11</option>
+			<option value = 12 title = "12 September 2011 - 18 September 2011">12</option>
+			<option value = 13 title = "19 September 2011 - 25 September 2011">13</option>
+			<option value = 14 title = "26 September 2011 - 02 October 2011">14</option>
+			<option value = 15 title = "03 October 2011 - 09 October 2011">15</option>
+			<option value = 16 title = "10 October 2011 - 16 October 2011">16</option>
+			<option value = 17 title = "17 October 2011 - 23 October 2011">17</option>
+			<option value = 18 title = "24 October 2011 - 30 October 2011">18</option>
+			<option value = 19 title = "31 October 2011 - 06 November 2011">19</option>
+			<option value = 20 title = "07 November 2011 - 13 November 2011">20</option>
+			<option value = 21 title = "14 November 2011 - 20 November 2011">21</option>
+			<option value = 22 title = "21 November 2011 - 27 November 2011">22</option>
+			<option value = 23 title = "28 November 2011 - 04 December 2011">23</option>
+			<option value = 24 title = "05 December 2011 - 11 December 2011">24</option>
+			<option value = 25 title = "12 December 2011 - 18 December 2011">25</option>
+			<option value = 26 title = "19 December 2011 - 25 December 2011">26</option>
+			<option value = 27 title = "26 December 2011 - 01 January 2012">27</option>
+			<option value = 28 title = "02 January 2012 - 08 January 2012">28</option>
+			<option value = 29 title = "09 January 2012 - 15 January 2012">29</option>
+			<option value = 30 title = "16 January 2012 - 22 January 2012">30</option>
+			<option value = 31 title = "23 January 2012 - 29 January 2012">31</option>
+			<option value = 32 title = "30 January 2012 - 05 February 2012">32</option>
+			<option value = 33 title = "06 February 2012 - 12 February 2012">33</option>
+			<option value = 34 title = "13 February 2012 - 19 February 2012">34</option>
+			<option value = 35 title = "20 February 2012 - 26 February 2012">35</option>
+			<option value = 36 title = "27 February 2012 - 04 March 2012">36</option>
+			<option value = 37 title = "05 March 2012 - 11 March 2012">37</option>
+			<option value = 38 title = "12 March 2012 - 18 March 2012">38</option>
+			<option value = 39 title = "19 March 2012 - 25 March 2012">39</option>
+			<option value = 40 title = "26 March 2012 - 01 April 2012">40</option>
+			<option value = 41 title = "02 April 2012 - 08 April 2012">41</option>
+			<option value = 42 title = "09 April 2012 - 15 April 2012">42</option>
+			<option value = 43 title = "16 April 2012 - 22 April 2012">43</option>
+			<option value = 44 title = "23 April 2012 - 29 April 2012">44</option>
+			<option value = 45 title = "30 April 2012 - 06 May 2012">45</option>
+			<option value = 46 title = "07 May 2012 - 13 May 2012">46</option>
+			<option value = 47 title = "14 May 2012 - 20 May 2012">47</option>
+			<option value = 48 title = "21 May 2012 - 27 May 2012">48</option>
+			<option value = 49 title = "28 May 2012 - 03 June 2012">49</option>
+			<option value = 50 title = "04 June 2012 - 10 June 2012">50</option>
+			<option value = 51 title = "11 June 2012 - 17 June 2012">51</option>
+			<option value = 52 selected = 'selected' title = "18 June 2012 - 24 June 2012">52</option>
+		</select></label>
+		<label id = "SpeedOfWeekChangeLabel" style = "display: none;">Time Interval Between Change of Week:<br />
+		0.5s<input type = "range" title = "Adjust the slider to choose a speed for the animation: minimum interval between changing the week shown is 0.5s and maximum is 5s" id = "SpeedOfWeekChange" value = 4000 min = 500 max = 5000 />5s</label>
+		<input type = "button" title = "Click to stop the animation" id = "PauseButton" onclick = "PauseCount()" value = "Stop" style = "display: none;"/>
+		<input type = "button" title = "Click to continue the animation from where it was" id = "ResumeButton" onclick = "ResumeCount()" value = "Resume" style = "display: none;"/>
+		<input type = "submit" title = "Click here to show the chosen data on the map. A map legend will be brought up on the right with and more information of what's been shown on the map" id = "SubmitButton" value = "Submit New Query"/>
+	</form>
+	<script>
+		var map;
+		var BirdName;
+		var a;
+		var timeInterval;
+		var WeekStart;
+		var WeekEnd;
+		var WhichPause;
+		
+		var FrequencyLayer = new google.maps.Data();
+		var WeeklyLayer = new google.maps.Data();
+		var ArbitraryLayer = new google.maps.Data();
+		
+		var script = document.createElement('script');
+		var script1 = document.createElement('script');
+		var script2 = document.createElement('script');
+		
+		var controlRecentUI = document.createElement('div');
+		var controlRecentText = document.createElement('div');
+		var controlFormUI = document.createElement('div');
+		var MinMax = document.createElement('div');
+		var MinMaxText = document.createElement('div');
+		var infoContent = document.createElement('div');
+		var legendUI = document.createElement('div');
+		var legendText = document.createElement('div');
+		var legendText1 = document.createElement('div');
+		var legendText2 = document.createElement('div');
+		var legendText3 = document.createElement('div');
+		var legendText4 = document.createElement('div');
+		var legendText5 = document.createElement('div');
+		var legendText6 = document.createElement('div');
+		var moreInfo = document.createElement('div');
+		
+		var when = "keyup"; //Can change this to keydown, keypress or change
+		
+		function initMap() {//Load map
+			script.src = 'FrequencyData.geojson'; //Get data from .geojson file, change to location of file as required
+			script1.src = 'WeeklyData.geojson';
+			script2.src = 'ArbitraryData.geojson';
+			document.getElementsByTagName('head')[0].appendChild(script);
+			document.getElementsByTagName('head')[0].appendChild(script1);
+			document.getElementsByTagName('head')[0].appendChild(script2);
+			
+			MinMax.className = 'MinMaxUI';
+			MinMaxText.innerHTML = '<b>-</b>';
+			MinMax.title = 'Hide this overlay';
+			MinMax.appendChild(MinMaxText);
+			MinMax.onclick = function(){MinMaxOverlay()};
+			controlRecentText.className = 'subUI';
+			controlRecentText.style.textAlign = 'center';
+			infoContent.className = 'subUI';
+			legendUI.className = 'subUI';
+			moreInfo.className = 'subsubUI';
+			legendText.style.textAlign = 'center';
+			legendText.innerHTML = '<h3>Map Legend</h3>';
+			legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+			legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+			legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+			legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+			legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+			legendText1.innerHTML = "The <b>size</b> of the marker relates to the <b>frequency of observation</b>. The bigger the circle, the more often the bird was seen! Hover the cursor over a marker to see the exact value. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
+			legendText1.innerHTML = "<img id = 'legend1' src = MarkerDidNotObserveWeek.svg width = 21.21 /> Weekly data not submitted";
+			legendText2.innerHTML = "<img id = 'legend1' src = MarkerDidNotObserveBird.svg width = 21.21 /> Bird not observed";
+			legendText3.innerHTML = "<img id = 'legend2' src = MarkerSeen.svg width = 42.83 /> Bird was seen in garden";
+			legendText4.innerHTML = "<img id = 'legend3' src = MarkerHeard.svg width = 48.25 /> Bird was heard";
+			legendText5.innerHTML = "<img id = 'legend4' src = MarkerFlyingOverhead.svg width = 41.22 /> Bird was seen flying overhead";
+			legendText6.innerHTML = "<img id = 'legend5' src = MarkerBreeding.svg width = 37.22 /> Bird was observed breeding";
+			legendUI.appendChild(legendText);
+			legendUI.appendChild(legendText1);
+			legendUI.appendChild(legendText2);
+			legendUI.appendChild(legendText3);
+			legendUI.appendChild(legendText4);
+			legendUI.appendChild(legendText5);
+			legendUI.appendChild(legendText6);
+			
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat:-17.773, lng: 31.06},//31067
+				zoom: 12,
+				mapTypeControlOptions: {
+					style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+				}
+			});
+
+			script.onload = function() {
+				var a = FrequencyLayer.getFeatureById('Chalkmead');
+				controlRecentUI.className = 'UI';
+				controlRecentUI.appendChild(MinMax);
+				controlRecentUI.appendChild(controlRecentText);
+				controlRecentUI.appendChild(legendUI);
+				controlRecentUI.appendChild(infoContent);
+				controlRecentUI.appendChild(moreInfo);
+				var i = 0;
+				a.forEachProperty(function(value, property){//Create dropdown list
+					var option = document.createElement('option');
+					option.value = property;
+					option.innerHTML = property;
+					BirdNameSearch.appendChild(option);
+					if (property == "886 Bunting Cinnamon-Breasted"){
+						searchBox = document.querySelector("#searchBox");
+						BirdNameSearch = document.querySelector("#BirdNameSearch");
+					}
+				});
+				controlFormUI.className = 'UIUI';
+				controlFormUI.appendChild(document.getElementById("Form1"));
+				map.controls[google.maps.ControlPosition.LEFT].push(controlFormUI);
+			}
+		}	
+		function data_callback0(results){//Add the geojson to the data objects
+			FrequencyLayer.addGeoJson(results);
+		}
+		function data_callback1(results){
+			WeeklyLayer.addGeoJson(results);
+		}
+		function data_callback2(results){
+			ArbitraryLayer.addGeoJson(results);
+		}
+		function getCircle(Freq, Scale, featureID){//Style the data
+			var circle
+			if ((ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed") <= 10){
+				if (Freq/Scale < 5 && Freq > 0){
+					circle = {
+						url:"MarkerInsigRed.svg",
+						anchor: new google.maps.Point(0, 12.37)
+					}
+				} else {
+					circle = {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillOpacity: 0.8,
+						fillColor: 'red',
+						scale: (Freq/Scale),
+						strokeColor: 'black',
+						strokeWeight: 1,
+					};
+				}
+			} else if ((10 < (ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed")) && ((ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed") < 21)){
+				if (Freq/Scale < 5 && Freq > 0){
+					circle = {
+						url:"MarkerInsigYellow.svg",
+						anchor: new google.maps.Point(0, 12.37)
+					}
+				} else {
+					circle = {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillOpacity: 0.8,
+						fillColor: 'yellow',
+						scale: (Freq/Scale),
+						strokeColor: 'black',
+						strokeWeight: 1,
+					};
+				}
+			} else if ((20 < (ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed")) && ((ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed") < 31)){
+				if (Freq/Scale < 5 && Freq > 0){
+					circle = {
+						url:"MarkerInsigGreen.svg",
+						anchor: new google.maps.Point(0, 12.37)
+					}
+				} else {
+					circle = {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillOpacity: 0.8,
+						fillColor: 'green',
+						scale: (Freq/Scale),
+						strokeColor: 'black',
+						strokeWeight: 1,
+					};
+				}
+			} else if ((30 < (ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed")) && ((ArbitraryLayer.getFeatureById(featureID)).getProperty("Total Number of Weeks Observed") < 41)){
+				if (Freq/Scale < 5 && Freq > 0){
+					circle = {
+						url:"MarkerInsigBlue.svg",
+						anchor: new google.maps.Point(0, 12.37)
+					}
+				} else {
+					circle = {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillOpacity: 0.8,
+						fillColor: 'blue',
+						scale: (Freq/Scale),
+						strokeColor: 'black',
+						strokeWeight: 1,
+					};
+				}
+			} else {
+				if (Freq/Scale < 5 && Freq > 0){
+					circle = {
+						url:"MarkerInsigPurple.svg",
+						anchor: new google.maps.Point(0, 12.37)
+					}
+				} else {
+					circle = {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillOpacity: 0.8,
+						fillColor: 'purple',
+						scale: (Freq/Scale),
+						strokeColor: 'black',
+						strokeWeight: 1,
+					};
+				}
+			};
+			return circle;
+		}
+		function WeeklyStyleFunction(Freq, featureID){//Style the data
+			var markerWeekly;
+			if (Freq == 0){
+				if ((ArbitraryLayer.getFeatureById(featureID)).getProperty("Number of Species Seen Week " + WeekStart) > 0){
+					markerWeekly = {
+						url: "MarkerDidNotObserveBird.svg",
+						anchor: new google.maps.Point(0, 20.96)
+					}
+				} else {
+					markerWeekly = {
+						url: "MarkerDidNotObserveWeek.svg",
+						anchor: new google.maps.Point(0, 20.96)
+					}
+				}
+			} else if (Freq == 1){
+				markerWeekly = {
+					url: "MarkerSeen.svg",
+					anchor: new google.maps.Point(0, 35.7)
+				}
+			} else if (Freq == 2){
+				markerWeekly = {
+					url: "MarkerHeard.svg",
+					anchor: new google.maps.Point(0, 37.9)
+				}
+			} else if (Freq == 3){
+				markerWeekly = {
+					url: "MarkerFlyingOverhead.svg",
+					anchor: new google.maps.Point(0, 46.77)
+				}
+			} else if (Freq == 4){
+				markerWeekly = {
+					url: "MarkerBreeding.svg",
+					anchor: new google.maps.Point(0, 45.25)
+				}
+			};
+			return markerWeekly;
+		}
+		function SearchInputFunction(){//Do things on submit
+			document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+			BirdName = document.getElementById("BirdNameSearch").value;
+			a = document.getElementById('ArbitraryDataList').value;
+			map.controls[google.maps.ControlPosition.TOP_RIGHT].clear();
+			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlRecentUI);
+			if (a == "Frequency"){
+				FrequencyLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(document.getElementById("BirdNameSearch").value);
+					return {
+						icon: getCircle(Freq1, 0.05*ArbitraryLayer.getFeatureById(feature.getId()).getProperty("Total Number of Weeks Observed"),  feature.getId()),
+						title: ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + ' was seen here in ' + Freq1 + ' of ' + (ArbitraryLayer.getFeatureById(feature.getId())).getProperty("Total Number of Weeks Observed") + ' weeks observed'
+					};
+				});
+				WeeklyLayer.setMap(null);
+				ArbitraryLayer.setMap(null);
+				FrequencyLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: Overall Frequency of " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + "</h3>";
+				ShowWikiData();
+				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+				legendText1.innerHTML = "The <b>size</b> of the marker relates to the <b>frequency of observation</b>. The bigger the circle, the more often the bird was seen! Hover the cursor over a marker to see the exact value. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
+				moreInfo.innerHTML = "<h3>Other</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+			} else if (a == "By Week"){
+				WeekStart = document.getElementById("StartWeek").value;
+				WeekEnd = document.getElementById("EndWeek").value;
+				WhichPause = 0;
+				document.getElementById('SubmitButton').setAttribute('style', "display: none;");
+				document.getElementById('PauseButton').setAttribute('style', "display: inline-block;");
+				document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel1').setAttribute('style', "display: none;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
+				ShowWikiData();
+				legendText1.innerHTML = "<img id = 'legend1' src = MarkerDidNotObserveWeek.svg width = 21.21 /> Weekly data not submitted";
+				legendText2.innerHTML = "<img id = 'legend1' src = MarkerDidNotObserveBird.svg width = 21.21 /> Bird not observed";
+				legendText3.innerHTML = "<img id = 'legend2' src = MarkerSeen.svg width = 42.83 /> Bird was seen in garden";
+				legendText4.innerHTML = "<img id = 'legend3' src = MarkerHeard.svg width = 48.25 /> Bird was heard";
+				legendText5.innerHTML = "<img id = 'legend4' src = MarkerFlyingOverhead.svg width = 41.22 /> Bird was seen flying overhead";
+				legendText6.innerHTML = "<img id = 'legend5' src = MarkerBreeding.svg width = 37.22 /> Bird was observed breeding";
+				moreInfo.innerHTML = "<h3>Other</h3><a href = https://www.google.co.zw/#q=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank' >Google Search</a><a href = http://sabap2.adu.org.za/species_list.php?part=" + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + "+" + (BirdName.slice(BirdName.indexOf(" ") + 1)).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " target = '_blank'>SABAP2 site search</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				FrequencyLayer.setMap(null);
+				ArbitraryLayer.setMap(null);
+				WeeklyLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(BirdName + " Week " + WeekStart);
+					return {
+						icon: WeeklyStyleFunction(Freq1, feature.getId())
+					};
+				});
+				WeeklyLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+				if(WeekStart < WeekEnd){
+					timeInterval = setInterval(function(){
+						WeekStart++;
+						if (WeekStart >= WeekEnd){
+							document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+							document.getElementById('PauseButton').setAttribute('style', "display: none;");
+							document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+							document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+							document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+							document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+							clearInterval(timeInterval);
+						}
+						WeeklyLayer.setStyle(function(feature){
+							var Freq1 = feature.getProperty(BirdName + " Week " + WeekStart);
+							return {
+								icon: WeeklyStyleFunction(Freq1, feature.getId())
+							};
+						});
+						WeeklyLayer.setMap(map);
+						controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+					}, document.getElementById('SpeedOfWeekChange').value);
+				} else {
+					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+					document.getElementById('PauseButton').setAttribute('style', "display: none;");
+					document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+					document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+					document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+					document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+				}
+			} else if (a == "Number of Species Seen Week "){
+				WeekStart = document.getElementById("StartWeek").value;
+				WeekEnd = document.getElementById("EndWeek").value;
+				WhichPause = 1;
+				document.getElementById('SubmitButton').setAttribute('style', "display: none;");
+				document.getElementById('PauseButton').setAttribute('style', "display: inline-block;");
+				document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
+				WeeklyLayer.setMap(null);
+				FrequencyLayer.setMap(null);
+				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+				legendText1.innerHTML = "The <b>size</b> of the marker correlates with the <b>number of species seen</b>. The bigger the circle, the greater the number of species! Hover the cursor over a marker to see the exact value at that location. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
+				infoContent.innerHTML = "";
+				ArbitraryLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(a + WeekStart);
+					return {
+						icon: getCircle(Freq1, 3, feature.getId()),
+						title: Freq1 + " different species were seen here in week " + WeekStart
+					};
+				});
+				ArbitraryLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+				if(WeekStart < WeekEnd){
+					timeInterval = setInterval(function(){
+						WeekStart++;
+						if (WeekStart >= WeekEnd){
+							document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+							document.getElementById('PauseButton').setAttribute('style', "display: none;");
+							document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+							document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+							clearInterval(timeInterval);
+						}
+						ArbitraryLayer.setStyle(function(feature){
+							var Freq1 = feature.getProperty(a + WeekStart);
+							return {
+								icon: getCircle(Freq1, 3, feature.getId()),
+								title: Freq1 + " different species were seen here in week " + WeekStart
+							};
+						});
+						ArbitraryLayer.setMap(map);
+						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+					}, document.getElementById('SpeedOfWeekChange').value);
+				} else {
+					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+					document.getElementById('PauseButton').setAttribute('style', "display: none;");
+					document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+					document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+					document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+					document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+				}
+			} else if (a == "Average Number of Species per Week Observed"){
+				ArbitraryLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(a);
+					return {
+						icon: getCircle(Freq1, 3, feature.getId()),
+						title: Freq1 + " species on average were seen here each week"
+					}
+				});
+				infoContent.innerHTML = "";
+				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+				legendText1.innerHTML = "The <b>size</b> of the circle corresponds to the <b>magnitude of the average</b>. The bigger the circle, the higher the average! Hover the cursor over a marker to see the exact value at that location. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
+				WeeklyLayer.setMap(null);
+				FrequencyLayer.setMap(null);
+				ArbitraryLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: " + a + "</h3>";
+			} else if (a == "Total Number of Species Observed"){
+				ArbitraryLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(a);
+					return {
+						icon: getCircle(Freq1, 5, feature.getId()),
+						title: Freq1 + " species in total were observed here"
+					}
+				});
+				infoContent.innerHTML = "";
+				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+				legendText1.innerHTML = "The <b>size</b> of the circle is linked to the <b>total number of species seen</b>. The bigger the circle, the greater the number of species seen! Hover the cursor over a marker to see the exact value at that location. The <b>colour</b> of the circle shows the <b>number of weeks of data that were submitted</b> from the location:"
+				WeeklyLayer.setMap(null);
+				FrequencyLayer.setMap(null);
+				ArbitraryLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: " + a + "</h3>";
+			} else {
+				ArbitraryLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(a);
+					return {
+						icon: getCircle(Freq1, 2, feature.getId()),
+						title: Freq1 + " weeks of observation data were submitted from this location"
+					}
+				});
+				infoContent.innerHTML = "";
+				legendText6.innerHTML = "<img src = MarkerCirclePurple.svg width = 66.73 /> Total number of weeks observed was 41 or more";
+				legendText5.innerHTML = "<img src = MarkerCircleBlue.svg width = 66.73 /> Total number of weeks observed was between 31 and 40";
+				legendText4.innerHTML = "<img src = MarkerCircleGreen.svg width = 66.73 /> Total number of weeks observed was between 21 and 30";
+				legendText3.innerHTML = "<img src = MarkerCircleYellow.svg width = 66.73 /> Total number of weeks observed was between 11 and 20";
+				legendText2.innerHTML = "<img src = MarkerCircleRed.svg width = 66.73 /> Total number of weeks observed was 10 or fewer";
+				legendText1.innerHTML = "The <b>size</b> of the circle indicates the <b>number of weeks of data that were submitted</b>. The bigger the circle, the better the location was at submitting their forms! Hover the cursor over a marker to see the exact value at that location.</b>"
+				moreInfo.innerHTML = "<h3>Other</h3><a href = http://sabap2.adu.org.za target = '_blank'>SABAP2 site</a><a href = http://www.birdlifezimbabwe.org target = '_blank' >Birdlife Zimbabwe</a><a href = https://www.facebook.com/BirdLifeZimbabwe target = '_blank' >BirdLife Zimbabwe Facebook</a><a href = mailto:2016hgbs@gmail.com?Subject=HGBSMap%20Feedback > Send Feedback</a>";
+				WeeklyLayer.setMap(null);
+				FrequencyLayer.setMap(null);
+				ArbitraryLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: " + a + "</h3>";
+			};
+		}
+		function PauseCount(){//Pause timeout
+			document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+			document.getElementById('PauseButton').setAttribute('style', "display: none;");
+			document.getElementById('ResumeButton').setAttribute('style', "display: inline-block;");
+			document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+			document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+			document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+			clearInterval(timeInterval);
+		}
+		function ResumeCount(){//Resume from pause
+			document.getElementById('PauseButton').setAttribute('style', "display: inline-block;");
+			document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+			document.getElementById('SubmitButton').setAttribute('style', "display: none;");
+			document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
+			document.getElementById('WeekLabel').setAttribute('style', "display: none;");
+			document.getElementById('WeekLabel1').setAttribute('style', "display: none;");
+			if(WhichPause == 0){
+				WeeklyLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(BirdName + " Week " + WeekStart);
+					return {
+						icon: WeeklyStyleFunction(Freq1, feature.getId()),
+					};
+				});
+				WeeklyLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+				if(WeekStart < WeekEnd){
+					timeInterval = setInterval(function(){
+						WeekStart++;
+						if (WeekStart >= WeekEnd){
+							document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+							document.getElementById('PauseButton').setAttribute('style', "display: none;");
+							document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+							document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+							document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+							document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+							clearInterval(timeInterval);
+						}
+						WeeklyLayer.setStyle(function(feature){
+							var Freq1 = feature.getProperty(BirdName + " Week " + WeekStart);
+							return {
+								icon: WeeklyStyleFunction(Freq1, feature.getId()),
+							};
+						});
+						WeeklyLayer.setMap(map);
+						controlRecentText.innerHTML = "<h3>Now Showing: " + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + " in Week " + WeekStart + "</h3>";
+					}, document.getElementById('SpeedOfWeekChange').value)
+				} else {
+					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+					document.getElementById('PauseButton').setAttribute('style', "display: none;");
+					document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+					document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+					document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+					document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+				}
+			} else {
+				ArbitraryLayer.setStyle(function(feature){
+					var Freq1 = feature.getProperty(a + WeekStart);
+					return {
+						icon: getCircle(Freq1, 2.5, feature.getId()),
+						title: Freq1 + " different species were seen here in week " + WeekStart
+					};
+				});
+				ArbitraryLayer.setMap(map);
+				controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+				if(WeekStart < WeekEnd){
+					timeInterval = setInterval(function(){
+						WeekStart++;
+						if (WeekStart >= WeekEnd){
+							document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+							document.getElementById('PauseButton').setAttribute('style', "display: none;");
+							document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+							document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+							document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+							document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+							clearInterval(timeInterval);
+						}
+						ArbitraryLayer.setStyle(function(feature){
+							var Freq1 = feature.getProperty(a + WeekStart);
+							return {
+								icon: getCircle(Freq1, 2.5, feature.getId()),
+								title: Freq1 + " different species were seen here in week " + WeekStart
+							};
+						});
+						ArbitraryLayer.setMap(map);
+						controlRecentText.innerHTML = "<h3>Now Showing: Total " + a + WeekStart + "</h3>";
+					}, document.getElementById('SpeedOfWeekChange').value);
+				} else {
+					document.getElementById('SubmitButton').setAttribute('style', "display: inline-block;");
+					document.getElementById('PauseButton').setAttribute('style', "display: none;");
+					document.getElementById('ResumeButton').setAttribute('style', "display: none;");
+					document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+					document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+					document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+				}
+			}
+		}
+		function HideUnhide(){//Hide and show elements depending on selection
+			if (document.getElementById('ArbitraryDataList').value == "Frequency"){
+				document.getElementById('BirdNameSearch').setAttribute('style', "display: inline-block;");
+				document.getElementById('searchBoxLabel').setAttribute('style', "display: inline-block;");
+				document.getElementById('WeekLabel').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel1').setAttribute('style', "display: none;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
+			} else if (document.getElementById('ArbitraryDataList').value == "By Week"){
+				document.getElementById('BirdNameSearch').setAttribute('style', "display: inline-block;");
+				document.getElementById('searchBoxLabel').setAttribute('style', "display: inline-block;");
+				document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+				document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;");
+			} else if (document.getElementById('ArbitraryDataList').value == "Number of Species Seen Week "){
+				document.getElementById('BirdNameSearch').setAttribute('style', "display: none;");
+				document.getElementById('searchBoxLabel').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel').setAttribute('style', "display: inline-block;");
+				document.getElementById('WeekLabel1').setAttribute('style', "display: inline-block;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: inline-block;"); 
+			} else {
+				document.getElementById('BirdNameSearch').setAttribute('style', "display: none;");
+				document.getElementById('searchBoxLabel').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel').setAttribute('style', "display: none;");
+				document.getElementById('WeekLabel1').setAttribute('style', "display: none;");
+				document.getElementById('SpeedOfWeekChangeLabel').setAttribute('style', "display: none;");
+			};
+		}
+		function MinMaxOverlay(){
+			if (MinMaxText.innerHTML == "<b>-</b>"){
+				while (controlRecentUI.childNodes.length > 1) {
+					controlRecentUI.removeChild(controlRecentUI.lastChild);
+				}
+				MinMaxText.innerHTML = "<b>+</b>";
+				MinMax.title = "Show the overlay";
+			} else {
+				MinMaxText.innerHTML = "<b>-</b>";
+				controlRecentUI.appendChild(controlRecentText);
+				controlRecentUI.appendChild(legendUI);
+				controlRecentUI.appendChild(infoContent);
+				controlRecentUI.appendChild(moreInfo);
+			}
+		}
+		function SetMinMax(){//Adjust week limits
+			if(document.getElementById('StartWeek').selectedIndex > document.getElementById('EndWeek').selectedIndex){
+				document.getElementById('EndWeek').value = document.getElementById('StartWeek').value;
+			}
+		}
+		function SetMaxMin(){
+			if(document.getElementById('StartWeek').selectedIndex > document.getElementById('EndWeek').selectedIndex){
+				document.getElementById('StartWeek').value = document.getElementById('EndWeek').value;
+			}
+		}
+		function ShowWikiData(){//Get some goodies from Google Knowledge Graph
+			var request = new XMLHttpRequest();
+			request.open('GET', 'https://kgsearch.googleapis.com/v1/entities:search?query=' + ((BirdName.slice(BirdName.indexOf(" ") + 1)).slice(BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1) + (BirdName.slice(BirdName.indexOf(" "))).slice(0, BirdName.slice(BirdName.indexOf(" ") + 1).indexOf(" ") + 1)) + '&key=AIzaSyA6gpzcZk2cZ5Lr0NPJDlDmoohChueFYw8&limit=1&indent=True', true);
+			request.onload = function() {
+			  if (request.status >= 200 && request.status < 400) {
+				//Success!
+				response = JSON.parse(request.responseText);
+				infoContent.innerHTML = '<a href = ' + response.itemListElement[0].result.detailedDescription.url + ' target = "_blank"><img id = "pic" src=' + response.itemListElement[0].result.image.contentUrl + ' alt="" title = "Wikipedia page"></a><p><h3>'+ response.itemListElement[0].result.name + '</h3>' + response.itemListElement[0].result.detailedDescription.articleBody + ' <a href = ' + response.itemListElement[0].result.detailedDescription.url + ' target = "_blank">Wikipedia</a></p>';
+			  } else {
+				//We reached our target server, but it returned an error
+			  }
+			};
+			request.onerror = function() {
+			  //There was a connection error of some sort
+			};
+			request.send();
+		}
+		
+		//google.maps.event.addDomListener(window, 'load', initMap);//Dingdingding!
+		searchBox.addEventListener("keyup", function (e) {
+			var text = e.target.value; 
+			var options = BirdNameSearch.options; 
+			for (var i = 0; i < options.length; i++) {
+				var option = options[i]; 
+				var optionText = option.text; 
+				var lowerOptionText = optionText.toLowerCase();
+				var lowerText = text.toLowerCase(); 
+				var regex = new RegExp("^" + text, "i");
+				var match = optionText.match(regex); 
+				var contains = lowerOptionText.indexOf(lowerText) != -1;
+				if (match || contains) {
+					option.selected = true;
+					return;
+				}
+				searchBox.selectedIndex = 0;
+			}
+		});
+
+
+	</script>
+</body>
+</html>
