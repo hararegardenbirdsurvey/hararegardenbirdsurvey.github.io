@@ -52,8 +52,15 @@
 		padding: 0px 10px 10px 10px;
 		border-bottom: solid 2px grey;
 	}
+	.subUI1 {
+		display: block;
+		text-align: center;
+		clear: left;
+		padding: 0px 10px 10px 10px;
+		border-bottom: solid 2px grey;
+	}
 	.subsubUI {
-		text-align: centre;
+		text-align: center;
 		clear: both;
 		padding-bottom: 5px;
 	}
@@ -303,7 +310,7 @@
 			MinMaxText.title = 'Hide this overlay';
 			MinMax.appendChild(MinMaxText);
 			MinMax.onclick = function(){MinMaxOverlay()};
-			controlRecentText.className = 'subUI';
+			controlRecentText.className = 'subUI1';
 			controlRecentText.style.textAlign = 'center';
 			infoContent.className = 'subUI';
 			legendUI.className = 'subUI';
@@ -331,8 +338,8 @@
 				controlRecentUI.className = 'UI';
 				Right.className = 'UIUIUI';
 				Right.appendChild(MinMax);
+				Right.appendChild(controlRecentText);
 				Right.appendChild(controlRecentUI);
-				controlRecentUI.appendChild(controlRecentText);
 				controlRecentUI.appendChild(legendUI);
 				controlRecentUI.appendChild(infoContent);
 				controlRecentUI.appendChild(moreInfo);
