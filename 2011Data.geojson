@@ -1,0 +1,569 @@
+data_callback0({
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "id":"GlenRobin",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.15821,-17.75461 ]
+    },
+    "properties": {
+    "Average Weekly Total":43.4,
+    "Total Species Seen":81
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Pringle",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.13836,-17.80465 ]
+    },
+    "properties": {
+    "Average Weekly Total":35.4,
+    "Total Species Seen":85
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Hogerty",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.1358,-17.70277 ]
+    },
+    "properties": {
+    "Average Weekly Total":47.7,
+    "Total Species Seen":130
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Caldwell",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.14754,-17.78352 ]
+    },
+    "properties": {
+    "Average Weekly Total":27.1,
+    "Total Species Seen":63
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Coronation",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.12613,-17.81276 ]
+    },
+    "properties": {
+    "Average Weekly Total":15.8,
+    "Total Species Seen":21
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"CoroBreeze",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.12634,-17.81204 ]
+    },
+    "properties": {
+    "Average Weekly Total":8.3,
+    "Total Species Seen":17
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Wavell",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.09722,-17.82038 ]
+    },
+    "properties": {
+    "Average Weekly Total":42.9,
+    "Total Species Seen":107
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Trafalgar",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.01266,-17.78775 ]
+    },
+    "properties": {
+    "Average Weekly Total":17,
+    "Total Species Seen":52
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Boscobel",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.10173,-17.80851 ]
+    },
+    "properties": {
+    "Average Weekly Total":20,
+    "Total Species Seen":36
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Quorn",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.05006,-17.77757 ]
+    },
+    "properties": {
+    "Average Weekly Total":26.3,
+    "Total Species Seen":68
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Soden",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.08366,-17.84058 ]
+    },
+    "properties": {
+    "Average Weekly Total":34.7,
+    "Total Species Seen":81
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Remembrance",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.04094,-17.84634 ]
+    },
+    "properties": {
+    "Average Weekly Total":11.9,
+    "Total Species Seen":28
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Huxham",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.13096,-17.81575 ]
+    },
+    "properties": {
+    "Average Weekly Total":37.2,
+    "Total Species Seen":68
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Grasmere",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.09281,-17.75236 ]
+    },
+    "properties": {
+    "Average Weekly Total":33,
+    "Total Species Seen":57
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Sawley",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.0146,-17.74995 ]
+    },
+    "properties": {
+    "Average Weekly Total":25,
+    "Total Species Seen":66
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Lymington",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.02453,-17.80448 ]
+    },
+    "properties": {
+    "Average Weekly Total":21.3,
+    "Total Species Seen":43
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Fisher",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.11128,-17.76133 ]
+    },
+    "properties": {
+    "Average Weekly Total":32.3,
+    "Total Species Seen":90
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"GlenClova",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.0958,-17.81496 ]
+    },
+    "properties": {
+    "Average Weekly Total":36.4,
+    "Total Species Seen":67
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Normandy",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.04667,-17.79345 ]
+    },
+    "properties": {
+    "Average Weekly Total":16.1,
+    "Total Species Seen":47
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"QueenElizabeth",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.13435,-17.81273 ]
+    },
+    "properties": {
+    "Average Weekly Total":24.9,
+    "Total Species Seen":42
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"LakeView",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.14556,-17.71363 ]
+    },
+    "properties": {
+    "Average Weekly Total":27.9,
+    "Total Species Seen":82
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Dandaro",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.07892,-17.78089 ]
+    },
+    "properties": {
+    "Average Weekly Total":15.1,
+    "Total Species Seen":28
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Walmer",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.07938,-17.80759 ]
+    },
+    "properties": {
+    "Average Weekly Total":18.3,
+    "Total Species Seen":37
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Borrowdale",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.09467,-17.74786 ]
+    },
+    "properties": {
+    "Average Weekly Total":27.9,
+    "Total Species Seen":65
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"SamoraMachel",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.09821,-17.8279 ]
+    },
+    "properties": {
+    "Average Weekly Total":20.4,
+    "Total Species Seen":70
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Addington",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.09283,-17.77353 ]
+    },
+    "properties": {
+    "Average Weekly Total":23.8,
+    "Total Species Seen":39
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Autumn",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.1145,-17.80531 ]
+    },
+    "properties": {
+    "Average Weekly Total":29.4,
+    "Total Species Seen":60
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"BS Leon",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.01523,-17.80691 ]
+    },
+    "properties": {
+    "Average Weekly Total":34.1,
+    "Total Species Seen":76
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Timber",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.13246,-17.78433 ]
+    },
+    "properties": {
+    "Average Weekly Total":26,
+    "Total Species Seen":30
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"SamNujoma",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.03912,-17.78456 ]
+    },
+    "properties": {
+    "Average Weekly Total":5.8,
+    "Total Species Seen":22
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Trinity",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.12527,-17.81963 ]
+    },
+    "properties": {
+    "Average Weekly Total":46,
+    "Total Species Seen":104
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Birley",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 30.99469,-17.7469 ]
+    },
+    "properties": {
+    "Average Weekly Total":20.8,
+    "Total Species Seen":25
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Fernleigh",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.08429,-17.75927 ]
+    },
+    "properties": {
+    "Average Weekly Total":31.6,
+    "Total Species Seen":88
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Chalkmead",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.11579,-17.83139 ]
+    },
+    "properties": {
+    "Average Weekly Total":42,
+    "Total Species Seen":98
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Duthie",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.04835,-17.79666 ]
+    },
+    "properties": {
+    "Average Weekly Total":19.1,
+    "Total Species Seen":43
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Knightbruce",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.02584,-17.81387 ]
+    },
+    "properties": {
+    "Average Weekly Total":21.6,
+    "Total Species Seen":43
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Norfolk",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.04736,-17.76061 ]
+    },
+    "properties": {
+    "Average Weekly Total":16.6,
+    "Total Species Seen":31
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Lillesdon",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.14158,-17.80676 ]
+    },
+    "properties": {
+    "Average Weekly Total":18.6,
+    "Total Species Seen":46
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Masefield",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.02399,-17.7998 ]
+    },
+    "properties": {
+    "Average Weekly Total":21.4,
+    "Total Species Seen":35
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Hillmorton",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.00597,-17.79743 ]
+    },
+    "properties": {
+    "Average Weekly Total":23.6,
+    "Total Species Seen":49
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Harare",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.13059,-17.78651 ]
+    },
+    "properties": {
+    "Average Weekly Total":25.3,
+    "Total Species Seen":42
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"PearTree",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.10358,-17.76185 ]
+    },
+    "properties": {
+    "Average Weekly Total":33.1,
+    "Total Species Seen":78
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Greendale",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.0992,-17.82671 ]
+    },
+    "properties": {
+    "Average Weekly Total":26.6,
+    "Total Species Seen":69
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Basset",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.06839,-17.78208 ]
+    },
+    "properties": {
+    "Average Weekly Total":21.9,
+    "Total Species Seen":54
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Wattle",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 30.97535,-17.76808 ]
+    },
+    "properties": {
+    "Average Weekly Total":26.4,
+    "Total Species Seen":67
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Taormina",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.00175,-17.74407 ]
+    },
+    "properties": {
+    "Average Weekly Total":23.6,
+    "Total Species Seen":40
+    }
+  },
+  {
+    "type": "Feature",
+    "id":"Adare",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 31.11803,-17.77555 ]
+    },
+    "properties": {
+    "Average Weekly Total":32.1,
+    "Total Species Seen":89
+    }
+  }
+]
+})
